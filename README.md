@@ -1,5 +1,5 @@
 # Demo FAQ Bot
-###### Фnswers questions related to the scholarship at Charles University
+###### Answers questions related to the scholarship at Charles University
 
 # You need:
     1) python 3.10 (or newer)

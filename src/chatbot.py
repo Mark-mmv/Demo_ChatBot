@@ -21,7 +21,7 @@ class AIAssistant:
         self.set_system_promt()
 
     def set_system_promt(self):
-        with open("src/info.txt", "r", encoding="utf-8") as f:
+        with open("info.txt", "r", encoding="utf-8") as f:
             university_info = f.read()
 
         system_prompt = f"""

@@ -72,23 +72,19 @@ class InterfaceMain(QMainWindow, QApplication, Ui_interface_chat_bot):
 
     def input_message(self):
         message = self.plain_text_edit.toPlainText()
-
-        self.text_browser.setTextColor(QtGui.QColor("#1a7f37"))
-        self.text_browser.append(f"User: ")
-        self.text_browser.setTextColor(QtGui.QColor("000000"))
-        self.text_browser.append(f"{message} \n")
-
+        self.print_to_text_browser(message=message, role="User", role_color="#1a7f37", text_color="000000")
         self.assistant.messages.append({"role": "user", "content": message})
 
     def output_message(self):
         assistant1_reply = self.assistant.respond(self.assistant.messages)
-
-        self.text_browser.setTextColor(QtGui.QColor("#d00000"))
-        self.text_browser.append(f"ChatBot: ")
-        self.text_browser.setTextColor(QtGui.QColor("000000"))
-        self.text_browser.append(f"{assistant1_reply} \n")
-
+        self.print_to_text_browser(message=assistant1_reply, role="ChatBot", role_color="#d00000", text_color="000000")
         self.assistant.messages.append({"role": "assistant", "content": assistant1_reply})
+
+    def print_to_text_browser(self, message, role="None", role_color="000000", text_color="000000"):
+        self.text_browser.setTextColor(QtGui.QColor(f"{role_color}"))
+        self.text_browser.append(f"{role}: ")
+        self.text_browser.setTextColor(QtGui.QColor(f"{text_color}"))
+        self.text_browser.append(f"{message} \n")
 
     def enter_message(self):
         try:
